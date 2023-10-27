@@ -1,0 +1,6 @@
+include ':module1',
+        ':module2',
+        ':module3'
+
+
+rootProject.name = "test_proj"
