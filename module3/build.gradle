@@ -61,7 +61,7 @@ afterEvaluate {
     publishing {
         publications {
             release(MavenPublication) {
-                from components.release
+                //from components.release
                 artifactId = "${rootProject.name}"
                 version = "${android.defaultConfig.versionName}"
             }
