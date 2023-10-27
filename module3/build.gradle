@@ -57,6 +57,23 @@ android {
     }
 }
 
+afterEvaluate {
+    publishing {
+        publications {
+            release(MavenPublication) {
+                from components.release
+                artifactId = "${rootProject.name}"
+                version = "${android.defaultConfig.versionName}"
+            }
+        }
+    }
+    pluginManager.withPlugin('com.jfrog.artifactory') {
+        artifactoryPublish {
+            publications(publishing.publications.release)
+        }
+    }
+}
+
 dependencies {
     implementation project(':module1')
     implementation 'io.github.yavski:fab-speed-dial:1.0.7'
