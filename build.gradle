@@ -40,8 +40,8 @@ ext {
 //}
 
 allprojects {
-    apply plugin: 'com.jfrog.artifactory'
-    apply plugin: 'maven-publish'
+    //apply plugin: 'com.jfrog.artifactory'
+    //apply plugin: 'maven-publish'
     apply plugin: 'idea'
 
     idea {
