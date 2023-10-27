@@ -2,7 +2,7 @@ buildscript {
     ext.kotlin_version = '1.8.22'
     repositories {
         maven {
-            url 'https://artifactory/artifactory/repo'
+            url 'https://elinaf.jfrog.io/artifactory/yoavh-gradle-dev-local'
             allowInsecureProtocol true
         }
         maven {
@@ -52,7 +52,7 @@ allprojects {
     }
     repositories {
         maven {
-            url 'https://artifactory/artifactory/repo'
+            url 'https://elinaf.jfrog.io/artifactory/yoavh-gradle-dev-local'
         }
         mavenCentral()
         google()
@@ -87,7 +87,7 @@ subprojects {
 }
 
 
-project('patrol-admin') {
+project('module1') {
     publishing {
         publications {
             apk(MavenPublication) {
@@ -107,7 +107,7 @@ project('patrol-admin') {
     }
 }
 
-project('patrol-guard') {
+project('module2') {
     publishing {
         publications {
             apk(MavenPublication) {
@@ -127,7 +127,7 @@ project('patrol-guard') {
     }
 }
 
-project('patrol-mobile-common') {
+project('module3') {
     publishing {
         publications {
             apk(MavenPublication) {
@@ -144,12 +144,12 @@ project('patrol-mobile-common') {
 
 artifactoryPublish.skip = true
 artifactory {
-    contextUrl = 'http://artifactory/artifactory/'
+    contextUrl = 'http://elinaf.jfrog.io/artifactory/'
     publish {
         repository {
-            repoKey = project.findProperty('artifactoryRepoKey') ?: 'ext-snapshot-local'
-            username = System.getenv('ARTI_USER')      //The publisher user name
-            password = System.getenv('ARTI_PASS')       //The publisher password
+            repoKey = project.findProperty('artifactoryRepoKey') ?: 'yoavh-gradle-dev-local'
+            username = "admoin"      //The publisher user name
+            password = "Password1!"       //The publisher password
             maven = true
         }
         defaults {
