@@ -39,7 +39,7 @@ android {
 
 }
 
-// afterEvaluate {
+afterEvaluate {
     publishing {
         publications {
             release(MavenPublication) {
@@ -54,7 +54,7 @@ android {
             publications(publishing.publications.release)
         }
     }
-// }
+}
 
 dependencies {
     api fileTree(include: ['*.jar'], dir: 'libs')
