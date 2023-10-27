@@ -62,6 +62,23 @@ android {
     useLibrary 'android.test.mock'
 }
 
+afterEvaluate {
+    publishing {
+        publications {
+            release(MavenPublication) {
+                from components.release
+                artifactId = "${rootProject.name}"
+                version = "${android.defaultConfig.versionName}"
+            }
+        }
+    }
+    pluginManager.withPlugin('com.jfrog.artifactory') {
+        artifactoryPublish {
+            publications(publishing.publications.release)
+        }
+    }
+}
+
 dependencies {
     implementation project(':module1')
 
