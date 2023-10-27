@@ -37,6 +37,13 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
 
+    libraryVariants.all { variant ->
+        variant.outputs.all {
+            // Do not add Variant (buildType) Name at the end
+            outputFileName = "${rootProject.name}-${defaultConfig.versionName}.aar"
+        }
+    }
+
 }
 
 afterEvaluate {
